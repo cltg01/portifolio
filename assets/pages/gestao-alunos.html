@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Cadastros e Documentos Automatizados | Cleito Araújo</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/details.css">
+    
+    <style>
+        /* Galeria otimizada para imagens largas (1341x629) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            aspect-ratio: 16 / 7.5;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay .badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        /* Responsividade para tablets */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Responsividade para mobile */
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .gallery-item {
+                aspect-ratio: 16 / 7.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent-blur">
+        <div class="container">
+            <a class="navbar-brand titulo-tech" href="index.html">
+                <i class="fas fa-code me-2"></i>CLEITO.DEV
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#resumo">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#experiencia">Experiência</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#tecnologias">Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link btn-contato ms-lg-3" href="mailto:seuemail@exemplo.com">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 100px;">
+        <!-- Breadcrumb -->
+        <section class="py-3">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent">
+                        <li class="breadcrumb-item"><a href="index.html">Portfólio</a></li>
+                        <li class="breadcrumb-item"><a href="index.html#projetos">Projetos</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Gestão de Cadastros e Documentos Automatizados</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Hero do Projeto -->
+        <section class="project-hero py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                        <h1 class="text-gradient mb-3">Gestão de Alunos e Documentos Automatizados</h1>
+                        <p class="lead text-light-50 mb-4">
+                            Um sistema eficiente para o registro e gerenciamento de aprendizes, estagiários, empresas e instituições de ensino,
+                            com automação completa na geração e armazenamento de contratos e termos em Google Drive.
+                        </p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="#" class="btn btn-primary-custom">
+                                <i class="fab fa-github me-2"></i>Ver no GitHub
+                            </a>
+                            <a href="#" class="btn btn-secondary-custom">
+                                <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 animate__animated animate__fadeInRight">
+                        <div class="project-showcase glass-card">
+                            <img src="../img/SA/Loginadmin.png" alt="Preview do Projeto" class="img-fluid rounded-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria de Imagens/GIFs -->
+        <section class="py-5">
+            <div class="container">
+                <h2 class="section-title mb-5">Galeria do Projeto</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item glass-card reveal">
+                        <img src="../img/SA/cadastroempresas.png" alt="Screenshot 1">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass-card reveal">
+                        <img src="../img/SA/cadastroaprendiz.png" alt="Screenshot 2">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass-card reveal">
+                        <img src="../img/SA/gerarcalendario.png" alt="GIF Demo">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-secondary"><i class="fas fa-play me-1"></i>GIF</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass-card reveal">
+                        <img src="..//img/SA/portaledicao.png" alt="Screenshot 3">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detalhes do Projeto -->
+        <section class="py-5 bg-darker">
+            <div class="container">
+                <div class="row">
+                    <!-- Descrição -->
+                    <div class="col-lg-8 reveal">
+                        <h2 class="mb-4">Sobre o Projeto</h2>
+                        <div class="content-text">
+                            <h4 class="text-cyan mb-3">O Intuito</h4>
+                            <p>
+                                O principal objetivo deste projeto foi otimizar e automatizar o processo de cadastro de novos participantes e a geração de documentos essenciais. Anteriormente, o registro de aprendizes, estagiários, empresas e instituições de ensino, bem como a criação de contratos e termos, era um processo manual, propenso a erros e que consumia um tempo considerável da equipe administrativa. A meta era criar um sistema que centralizasse essas informações e automatizasse a produção documental.
+                            </p>
+                            
+                            <h4 class="text-cyan mb-3 mt-5">Solução Implementada</h4>
+                            <p>
+                                Desenvolvi uma solução integrada que simplifica e automatiza a gestão de cadastros e a geração de documentos, utilizando a flexibilidade e a integração do Google Workspace:
+                            </p>
+                            <ul class="list-custom">
+                                <li>
+                                    <strong>Cadastro Centralizado:</strong> Um sistema robusto para o registro detalhado de aprendizes, estagiários, empresas parceiras e instituições de ensino, garantindo a integridade e fácil acesso aos dados.
+                                </li>
+                                <li>
+                                    <strong>Geração Automatizada de Documentos:</strong> Criação dinâmica de uma variedade de documentos, como contratos de estágio, termos de compromisso e outros formulários, preenchidos automaticamente com os dados cadastrados.
+                                </li>
+                                <li>
+                                    <strong>Armazenamento Inteligente no Google Drive:</strong> Todos os documentos gerados são automaticamente salvos em formato PDF e Google Docs no Google Drive, organizados por categorias, facilitando a busca, o compartilhamento e a auditoria.
+                                </li>
+                                <li>
+                                    <strong>Integração com Google Sheets:</strong> Utilização de planilhas Google como base de dados para o cadastro e para alimentar os templates de documentos, garantindo uma interface familiar e de fácil manutenção.
+                                </li>
+                            </ul>
+
+                            <h4 class="text-cyan mb-3 mt-5">Resultados</h4>
+                            <p>
+                                A implementação deste sistema resultou em uma **otimização significativa do tempo e redução de erros** nos processos de cadastro e geração de documentos. A automação permitiu que a equipe administrativa redirecionasse seu foco para atividades mais estratégicas, enquanto a centralização e organização dos documentos no Google Drive garantiram maior segurança, acessibilidade e conformidade. A agilidade na emissão de documentos contribuiu para uma experiência mais fluida para aprendizes, estagiários e parceiros.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar com Informações -->
+                    <div class="col-lg-4">
+                        <!-- Tecnologias Usadas -->
+                        <div class="glass-card p-4 mb-4 reveal">
+                            <h4 class="mb-3">
+                                <i class="fas fa-tools me-2 text-cyan"></i>Tecnologias Usadas
+                            </h4>
+                            <div class="tech-badges">
+                                <span class="badge bg-dark border border-cyan">Python</span>
+                                <span class="badge bg-dark border border-cyan">Google Sheets API</span>
+                                <span class="badge bg-dark border border-cyan">Google Docs API</span>
+                                <span class="badge bg-dark border border-cyan">Google Drive API</span>
+                                <span class="badge bg-dark border border-cyan">Geração de PDF</span>
+                            </div>
+                        </div>
+
+                        <!-- Informações do Projeto -->
+                        <div class="glass-card p-4 mb-4 reveal">
+                            <h4 class="mb-3">
+                                <i class="fas fa-info-circle me-2 text-cyan"></i>Informações
+                            </h4>
+                            <div class="info-item">
+                                <span class="label">Status:</span>
+                                <span class="badge bg-success">Completo</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Ano:</span>
+                                <span>2024</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Tipo:</span>
+                                <span class="badge bg-secondary">Automação de Documentos</span>
+                            </div>
+                        </div>
+
+                        <!-- Desafios Enfrentados -->
+                        <div class="glass-card p-4 reveal">
+                            <h4 class="mb-3">
+                                <i class="fas fa-exclamation-triangle me-2 text-cyan"></i>Desafios
+                            </h4>
+                            <ul class="list-custom-small">
+                                <li>Integração segura com Google Sheets, Docs e Drive APIs.</li>
+                                <li>Garantir a formatação consistente e precisa dos documentos gerados.</li>
+                                <li>Gerenciamento de permissões e acesso aos documentos no Google Drive.</li>
+                                <li>Validação de dados para evitar erros no preenchimento automático.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Aprendizados -->
+        <section class="py-5">
+            <div class="container">
+                <h2 class="section-title mb-5">Aprendizados e Lições</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-4 reveal">
+                        <div class="glass-card p-4">
+                            <h5 class="text-cyan mb-3">
+                                <i class="fas fa-lightbulb me-2"></i>Lição 1: Eficiência na Automação de Processos Administrativos
+                            </h5>
+                            <p class="text-light-50">
+                                A automação de tarefas repetitivas, como cadastro e geração de documentos, libera recursos humanos para atividades mais estratégicas e de maior valor agregado. A escolha de plataformas integradas, como o Google Workspace, potencializa essa eficiência ao centralizar dados e ferramentas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 reveal">
+                        <div class="glass-card p-4">
+                            <h5 class="text-cyan mb-3">
+                                <i class="fas fa-lightbulb me-2"></i>Lição 2: Importância da Integridade e Segurança dos Dados
+                            </h5>
+                            <p class="text-light-50">
+                                Ao lidar com informações sensíveis de indivíduos e empresas, a integridade e a segurança dos dados são primordiais. O projeto reforçou a necessidade de implementar autenticação robusta e gerenciamento de permissões para proteger as informações e garantir a conformidade.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-5 bg-darker">
+            <div class="container text-center">
+                <h2 class="mb-4">Gostou deste Projeto?</h2>
+                <p class="lead text-light-50 mb-4">Veja mais projetos ou entre em contato para discutir novas oportunidades</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="index.html#projetos" class="btn btn-primary-custom">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar aos Projetos
+                    </a>
+                    <a href="mailto:seuemail@exemplo.com" class="btn btn-secondary-custom">
+                        <i class="fas fa-envelope me-2"></i>Enviar Mensagem
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-4 text-center border-top border-secondary">
+        <p class="mb-0 text-light-50">&copy; 2025 Cleito Araújo.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
