@@ -27,6 +27,40 @@
         .colorbtn:hover{
             color: #0078D7;
         }
+        /* Ajuste de responsividade para imagens dos projetos */
+        .project-card .project-img-container {
+            width: 100%;
+            height: 250px; /* Altura fixa para manter o padrão */
+            overflow: hidden;
+            position: relative;
+        }
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+            object-position: top; /* Foca no topo da imagem, útil para screenshots de sistemas */
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        /* Overlay ajustado para o novo container */
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -307,15 +341,15 @@
             <div class="container">
                 <h2 class="section-title text-center mb-5">Projetos em Destaque</h2>
                 <div class="row g-4">
-                    <!-- Projeto 1: Gestão de Cadastros e Documentos -->
-                    <div class="col-md-6 reveal">
-                        <div class="project-card glass-card">
-                            <div class="">
-                                <img src="assets/img/SA/Loginadmin.png" alt="Projeto">
-                                <div class="project-overlay">
-                                    <a href="assets/pages/gestao-alunos.html" class="btn btn-outline-light btn-sm">Ver Detalhes</a>
-                                </div>
-                            </div>
+	                    <!-- Projeto 1: Gestão de Cadastros e Documentos -->
+	                    <div class="col-md-6 reveal">
+	                        <div class="project-card glass-card">
+	                            <div class="project-img-container">
+	                                <img src="assets/img/SA/Loginadmin.png" alt="Projeto">
+	                                <div class="project-overlay">
+	                                    <a href="assets/pages/gestao-alunos.html" class="btn btn-outline-light btn-sm">Ver Detalhes</a>
+	                                </div>
+	                            </div>
                             <div class="p-4">
                                 <h5>Gestão de Alunos e Documentos Automatizados</h5>
                                 <p class="text-light-50 small">Sistema centralizado para registro de aprendizes, estagiários, empresas e instituições, com geração automática de contratos e termos salvos no Google Drive.</p>
@@ -332,16 +366,15 @@
                             </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Projeto 2: Emissão de Certificados -->
-                    <div class="col-md-6 reveal">
-                        <div class="project-card glass-card">
-                            <div class="">
-                                <img src="assets/img/SC/logincert.png" alt="Projeto">
-                                <div class="project-overlay">
-                                    <a href="assets/pages/emissao-certificados.html" class="btn btn-outline-light btn-sm">Ver Detalhes</a>
-                                </div>
-                            </div>
+                    </div>	                    <!-- Projeto 2: Emissão de Certificados -->
+	                    <div class="col-md-6 reveal">
+	                        <div class="project-card glass-card">
+	                            <div class="project-img-container">
+	                                <img src="assets/img/SC/logincert.png" alt="Projeto">
+		                                <div class="project-overlay">
+		                                    <a href="assets/pages/emissao-certificados.html" class="btn btn-outline-light btn-sm">Ver Detalhes</a>
+		                                </div>
+		                            </div>
                             <div class="p-4">
                                 <h5>Sistema de Emissão de Certificados</h5>
                                 <p class="text-light-50 small">Plataforma que permite aos aprendizes emitirem seus certificados após conclusão do curso, com validação automática e envio por e-mail.</p>
@@ -360,15 +393,15 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Projeto 3: Gestão Escolar e Dossiê -->
-                    <div class="col-md-6 reveal">
-                        <div class="project-card glass-card">
-                            <div class="">
-                                <img src="assets/img/SP/login.png" alt="Projeto">
-                                <div class="project-overlay">
-                                    <a href="assets/pages/gestao-pedagogica.html" class="btn btn-outline-light btn-sm">Ver Detalhes</a>
-                                </div>
-                            </div>
+	                    <!-- Projeto 3: Gestão Escolar e Dossiê -->
+	                    <div class="col-md-6 reveal">
+	                        <div class="project-card glass-card">
+	                            <div class="project-img-container">
+	                                <img src="assets/img/SP/login.png" alt="Projeto">
+	                                <div class="project-overlay">
+	                                    <a href="assets/pages/gestao-pedagogica.html" class="btn btn-outline-light btn-sm">Ver Detalhes</a>
+	                                </div>
+	                            </div>
                             <div class="p-4">
                                 <h5>Gestão Pedagógica e Dossiê do Aluno</h5>
                                 <p class="text-light-50 small">Plataforma completa para controle de frequência, administração de cursos, cronogramas e dossiê detalhado do aluno com alertas via e-mail e WhatsApp.</p>
@@ -387,15 +420,15 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Projeto 4: Controle Financeiro -->
-                    <div class="col-md-6 reveal">
-                        <div class="project-card glass-card">
-                            <div class="">
-                                <img src="assets/img/" alt="DESENVOLVIMENTO">
-                                <div class="project-overlay">
-                                    <a href="#" class="btn btn-outline-light btn-sm">Ver Detalhes</a>
-                                </div>
-                            </div>
+	                    <!-- Projeto 4: Controle Financeiro -->
+	                    <div class="col-md-6 reveal">
+	                        <div class="project-card glass-card">
+	                            <div class="project-img-container">
+	                                <img src="assets/img/" alt="DESENVOLVIMENTO">
+	                                <div class="project-overlay">
+	                                    <a href="#" class="btn btn-outline-light btn-sm">Ver Detalhes</a>
+	                                </div>
+	                            </div>
                             <div class="p-4">
                                 <h5>Controle Financeiro e Relatórios Empresariais</h5>
                                 <p class="text-light-50 small">EM DESENVOLVIMENTO</p>
