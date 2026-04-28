@@ -21,12 +21,86 @@
     
 <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/details.css">
+    <style>
+            /* Galeria otimizada para imagens largas (1341x629) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            aspect-ratio: 16 / 7.5;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay .badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        /* Responsividade para tablets */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Responsividade para mobile */
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .gallery-item {
+                aspect-ratio: 16 / 7.5;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
+   <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent-blur">
         <div class="container">
-            <a class="navbar-brand titulo-tech" href="index.html">
+            <a class="navbar-brand titulo-tech" href="../../index.html">
                 <i class="fas fa-code me-2"></i>CLEITO.DEV
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -34,11 +108,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html#resumo">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#experiencia">Experiência</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#tecnologias">Habilidades</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#projetos">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link btn-contato ms-lg-3" href="mailto:seuemail@exemplo.com">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html#resumo">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html#experiencia">Experiência</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html#tecnologias">Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html#projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link btn-contato ms-lg-3" href="mailto:cleitogmes12@gmail.com">Contato</a></li>
                 </ul>
             </div>
         </div>
@@ -50,8 +124,8 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent">
-                        <li class="breadcrumb-item"><a href="index.html">Portfólio</a></li>
-                        <li class="breadcrumb-item"><a href="index.html#projetos">Projetos</a></li>
+                        <li class="breadcrumb-item"><a href="../../index.html">Portfólio</a></li>
+                        <li class="breadcrumb-item"><a href="../../index.html#projetos">Projetos</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Sistema de Emissão de Certificados e Conclusão</li>
                     </ol>
                 </nav>
@@ -69,18 +143,18 @@
                             garantindo a validação da conclusão do curso e o envio automático por e-mail,
                             utilizando templates dinâmicos do Google Apresentações.
                         </p>
-                        <div class="d-flex gap-3 flex-wrap">
+                        <!-- <div class="d-flex gap-3 flex-wrap">
                             <a href="#" class="btn btn-primary-custom">
                                 <i class="fab fa-github me-2"></i>Ver no GitHub
                             </a>
                             <a href="#" class="btn btn-secondary-custom">
                                 <i class="fas fa-external-link-alt me-2"></i>Live Demo
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-lg-6 animate__animated animate__fadeInRight">
                         <div class="project-showcase glass-card">
-                            <img src="assets/img/foto_cleito.jpeg" alt="Preview do Projeto" class="img-fluid rounded-3">
+                            <img src="../img/SC/logincert.png" alt="Preview do Projeto" class="img-fluid rounded-3">
                         </div>
                     </div>
                 </div>
@@ -88,34 +162,29 @@
         </section>
 
         <!-- Galeria de Imagens/GIFs -->
-        <section class="py-5">
+       <section class="py-5">
             <div class="container">
                 <h2 class="section-title mb-5">Galeria do Projeto</h2>
                 <div class="gallery-grid">
                     <div class="gallery-item glass-card reveal">
-                        <img src="assets/img/foto_cleito.jpeg" alt="Screenshot 1">
+                        <img src="../img/SC/emitircertificado.png" alt="Screenshot 1">
                         <div class="gallery-overlay">
                             <span class="badge bg-cyan">Screenshot</span>
                         </div>
                     </div>
                     <div class="gallery-item glass-card reveal">
-                        <img src="assets/img/foto_cleito.jpeg" alt="Screenshot 2">
+                        <img src="../img/SC/certificadoenviado.png" alt="Screenshot 2">
                         <div class="gallery-overlay">
                             <span class="badge bg-cyan">Screenshot</span>
                         </div>
                     </div>
                     <div class="gallery-item glass-card reveal">
-                        <img src="assets/img/foto_cleito.jpeg" alt="GIF Demo">
+                        <img src="../img/SC/emailcert.png" alt="Screenshot 4">
                         <div class="gallery-overlay">
-                            <span class="badge bg-secondary"><i class="fas fa-play me-1"></i>GIF</span>
+                            <span class="badge bg-cyan"></i>Screenshot</span>
                         </div>
                     </div>
-                    <div class="gallery-item glass-card reveal">
-                        <img src="assets/img/foto_cleito.jpeg" alt="Screenshot 3">
-                        <div class="gallery-overlay">
-                            <span class="badge bg-cyan">Screenshot</span>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </section>
@@ -150,11 +219,14 @@
                                 <li>
                                     <strong>Distribuição Automatizada por E-mail:</strong> Após a geração, o certificado é automaticamente convertido para PDF e enviado por e-mail ao aprendiz, eliminando a necessidade de intervenção manual na distribuição.
                                 </li>
+                                <li>
+                                    <strong>Centralização do certificados:</strong> Após a geração, o certificado é automaticamente salvo no drive, garantindo a disponibilidade registro das emissões.
+                                </li>
                             </ul>
 
                             <h4 class="text-cyan mb-3 mt-5">Resultados</h4>
                             <p>
-                                Este sistema transformou a experiência de conclusão de curso para os aprendizes e otimizou drasticamente o trabalho administrativo. Houve uma **redução significativa no tempo de processamento de certificados**, eliminando gargalos e garantindo que os alunos recebam seus documentos de forma rápida e eficiente. A autonomia concedida aos aprendizes e a padronização dos certificados resultaram em maior satisfação e profissionalismo, enquanto a automação liberou a equipe para focar em outras atividades educacionais.
+                                Este sistema transformou a experiência de conclusão de curso para os aprendizes e otimizou drasticamente o trabalho administrativo. Houve uma <strong>redução significativa no tempo de processamento de certificados</strong>, eliminando gargalos e garantindo que os alunos recebam seus documentos de forma rápida e eficiente. A autonomia concedida aos aprendizes e a padronização dos certificados resultaram em maior satisfação e profissionalismo, enquanto a automação liberou a equipe para focar em outras atividades educacionais.
                             </p>
                         </div>
                     </div>
@@ -167,11 +239,17 @@
                                 <i class="fas fa-tools me-2 text-cyan"></i>Tecnologias Usadas
                             </h4>
                             <div class="tech-badges">
-                                <span class="badge bg-dark border border-cyan">Python</span>
+                               <span class="badge bg-dark border border-cyan">Google Scripts</span>
+                                 <span class="badge bg-dark border border-cyan">HTML</span>
+                                 <span class="badge bg-dark border border-cyan">Tailwind </span>
+                                 <span class="badge bg-dark border border-cyan">JavaScript </span>
                                 <span class="badge bg-dark border border-cyan">Google Sheets API</span>
-                                <span class="badge bg-dark border border-cyan">Google Slides API</span>
-                                <span class="badge bg-dark border border-cyan">SMTP (Envio de E-mails)</span>
+                                <span class="badge bg-dark border border-cyan">Google Docs API</span>
+                                <span class="badge bg-dark border border-cyan">Google Drive API</span>
+                                 <span class="badge bg-dark border border-cyan">Google Apresentações (Slide)</span>
+                                 <span class="badge bg-dark border border-cyan">Google Gmail</span>
                                 <span class="badge bg-dark border border-cyan">Geração de PDF</span>
+
                             </div>
                         </div>
 
@@ -186,7 +264,11 @@
                             </div>
                             <div class="info-item">
                                 <span class="label">Ano:</span>
-                                <span>2024</span>
+                                <span>2025</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Atualizações:</span>
+                                <span class="badge ">Migrar para Python e postgresql</span>
                             </div>
                             <div class="info-item">
                                 <span class="label">Tipo:</span>
@@ -246,10 +328,10 @@
                 <h2 class="mb-4">Gostou deste Projeto?</h2>
                 <p class="lead text-light-50 mb-4">Veja mais projetos ou entre em contato para discutir novas oportunidades</p>
                 <div class="d-flex gap-3 justify-content-center flex-wrap">
-                    <a href="index.html#projetos" class="btn btn-primary-custom">
+                    <a href="../../index.html#projetos" class="btn btn-primary-custom">
                         <i class="fas fa-arrow-left me-2"></i>Voltar aos Projetos
                     </a>
-                    <a href="mailto:seuemail@exemplo.com" class="btn btn-secondary-custom">
+                    <a href="mailto:cleitogmes12@gmail.com" class="btn btn-secondary-custom">
                         <i class="fas fa-envelope me-2"></i>Enviar Mensagem
                     </a>
                 </div>
