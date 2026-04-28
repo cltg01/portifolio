@@ -21,10 +21,84 @@
     
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/details.css">
+    <style>
+        /* Galeria otimizada para imagens largas (1341x629) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            aspect-ratio: 16 / 7.5;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay .badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        /* Responsividade para tablets */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Responsividade para mobile */
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .gallery-item {
+                aspect-ratio: 16 / 7.5;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent-blur">
+     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent-blur">
         <div class="container">
             <a class="navbar-brand titulo-tech" href="index.html">
                 <i class="fas fa-code me-2"></i>CLEITO.DEV
@@ -34,11 +108,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html#resumo">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#experiencia">Experiência</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#tecnologias">Habilidades</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#projetos">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link btn-contato ms-lg-3" href="mailto:seuemail@exemplo.com">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html#resumo">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html#experiencia">Experiência</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html#tecnologias">Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html#projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link btn-contato ms-lg-3" href="mailto:cleitogmes12@gmail.com">Contato</a></li>
                 </ul>
             </div>
         </div>
@@ -50,9 +124,9 @@
             <div class="container">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent">
-                        <li class="breadcrumb-item"><a href="index.html">Portfólio</a></li>
-                        <li class="breadcrumb-item"><a href="index.html#projetos">Projetos</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Gestão Escolar e Dossiê do Aluno</li>
+                        <li class="breadcrumb-item"><a href="../../index.html">Portfólio</a></li>
+                        <li class="breadcrumb-item"><a href="../../index.html#projetos">Projetos</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Gestão Pedagógica e Dossiê do Aluno</li>
                     </ol>
                 </nav>
             </div>
@@ -69,18 +143,18 @@
                             complementada por um dossiê detalhado do aluno que centraliza informações,
                             desempenho e comunicação personalizada via e-mail e WhatsApp.
                         </p>
-                        <div class="d-flex gap-3 flex-wrap">
+                        <!-- <div class="d-flex gap-3 flex-wrap">
                             <a href="#" class="btn btn-primary-custom">
                                 <i class="fab fa-github me-2"></i>Ver no GitHub
                             </a>
                             <a href="#" class="btn btn-secondary-custom">
                                 <i class="fas fa-external-link-alt me-2"></i>Live Demo
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-lg-6 animate__animated animate__fadeInRight">
                         <div class="project-showcase glass-card">
-                            <img src="assets/img/foto_cleito.jpeg" alt="Preview do Projeto" class="img-fluid rounded-3">
+                            <img src="../img/SP/login.png" alt="Preview do Projeto" class="img-fluid rounded-3">
                         </div>
                     </div>
                 </div>
@@ -93,25 +167,73 @@
                 <h2 class="section-title mb-5">Galeria do Projeto</h2>
                 <div class="gallery-grid">
                     <div class="gallery-item glass-card reveal">
-                        <img src="assets/img/foto_cleito.jpeg" alt="Screenshot 1">
+                        <img src="../img/SP/dashboard.png" alt="Screenshot 1">
                         <div class="gallery-overlay">
                             <span class="badge bg-cyan">Screenshot</span>
                         </div>
                     </div>
                     <div class="gallery-item glass-card reveal">
-                        <img src="assets/img/foto_cleito.jpeg" alt="Screenshot 2">
+                        <img src="../img/SP/dashboard2.png" alt="Screenshot 2">
                         <div class="gallery-overlay">
                             <span class="badge bg-cyan">Screenshot</span>
                         </div>
                     </div>
                     <div class="gallery-item glass-card reveal">
-                        <img src="assets/img/foto_cleito.jpeg" alt="GIF Demo">
+                        <img src="../img/SP/cursos.png" alt="GIF Demo">
                         <div class="gallery-overlay">
-                            <span class="badge bg-secondary"><i class="fas fa-play me-1"></i>GIF</span>
+                            <span class="badge bg-cyan">Screenshot</span>
                         </div>
                     </div>
                     <div class="gallery-item glass-card reveal">
-                        <img src="assets/img/foto_cleito.jpeg" alt="Screenshot 3">
+                        <img src="../img/SP/criardisciplina.png" alt="Screenshot 3">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass-card reveal">
+                        <img src="../img/SP/criarprof.png" alt="Screenshot 3">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass-card reveal">
+                        <img src="../img/SP/criarturma.png" alt="Screenshot 3">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass-card reveal">
+                        <img src="../img/SP/criarcronograma.png" alt="Screenshot 3">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass-card reveal">
+                        <img src="../img/SP/cronogramamensal.png" alt="Screenshot 3">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                     <div class="gallery-item glass-card reveal">
+                        <img src="../img/SP/cronogramasemanal.png" alt="Screenshot 3">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                     <div class="gallery-item glass-card reveal">
+                        <img src="../img/SP/criarferiados.png" alt="Screenshot 3">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                     <div class="gallery-item glass-card reveal">
+                        <img src="../img/SP/relatorios.png" alt="Screenshot 3">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-cyan">Screenshot</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass-card reveal">
+                        <img src="../img/SP/templatesalertas.png" alt="Screenshot 3">
                         <div class="gallery-overlay">
                             <span class="badge bg-cyan">Screenshot</span>
                         </div>
@@ -170,11 +292,16 @@
                                 <i class="fas fa-tools me-2 text-cyan"></i>Tecnologias Usadas
                             </h4>
                             <div class="tech-badges">
-                                <span class="badge bg-dark border border-cyan">Python</span>
+                                   <span class="badge bg-dark border border-cyan">Google Scripts</span>
+                                 <span class="badge bg-dark border border-cyan">HTML</span>
+                                 <span class="badge bg-dark border border-cyan">Tailwind </span>
+                                 <span class="badge bg-dark border border-cyan">JavaScript </span>
                                 <span class="badge bg-dark border border-cyan">Google Sheets API</span>
-                                <span class="badge bg-dark border border-cyan">Google Script (Apps Script)</span>
-                                <span class="badge bg-dark border border-cyan">SMTP (Envio de E-mails)</span>
-                                <span class="badge bg-dark border border-cyan">API de Mensageria (WhatsApp)</span>
+                                <span class="badge bg-dark border border-cyan">Google Docs API</span>
+                                <span class="badge bg-dark border border-cyan">Google Drive API</span>
+                                 <span class="badge bg-dark border border-cyan">Google Gmail</span>
+                                  <span class="badge bg-dark border border-cyan">WhatsApp</span>
+                                <span class="badge bg-dark border border-cyan">Geração de PDF</span>
                             </div>
                         </div>
 
@@ -189,8 +316,9 @@
                             </div>
                             <div class="info-item">
                                 <span class="label">Ano:</span>
-                                <span>2024</span>
+                                <span>2026</span>
                             </div>
+                            
                             <div class="info-item">
                                 <span class="label">Tipo:</span>
                                 <span class="badge bg-secondary">Gestão Educacional</span>
@@ -250,10 +378,10 @@
                 <h2 class="mb-4">Gostou deste Projeto?</h2>
                 <p class="lead text-light-50 mb-4">Veja mais projetos ou entre em contato para discutir novas oportunidades</p>
                 <div class="d-flex gap-3 justify-content-center flex-wrap">
-                    <a href="index.html#projetos" class="btn btn-primary-custom">
+                    <a href="../../index.html#projetos" class="btn btn-primary-custom">
                         <i class="fas fa-arrow-left me-2"></i>Voltar aos Projetos
                     </a>
-                    <a href="mailto:seuemail@exemplo.com" class="btn btn-secondary-custom">
+                    <a href="mailto:cleitogmes12@gmail.com" class="btn btn-secondary-custom">
                         <i class="fas fa-envelope me-2"></i>Enviar Mensagem
                     </a>
                 </div>
